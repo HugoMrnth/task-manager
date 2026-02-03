@@ -1,4 +1,9 @@
 {
+  "name": "task-manager-frontend",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "echo 'No tests yet'"
+  },
   "devDependencies": {
     "eslint-config-prettier": "^10.1.8"
   }
