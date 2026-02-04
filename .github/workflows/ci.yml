@@ -134,18 +134,18 @@ jobs:
         run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
 
       - name: Build backend image
-        run: docker build -f backend/Dockerfile -t ghcr.io/${{ github.repository_owner }}/task-manager-backend:latest -t ghcr.io/${{ github.repository_owner }}/task-manager-backend:${{ github.sha }} backend/
+        run: docker build -f backend/Dockerfile -t ghcr.io/${{ github.repository_owner | lower }}/task-manager-backend:latest -t ghcr.io/${{ github.repository_owner | lower }}/task-manager-backend:${{ github.sha }} backend/
 
       - name: Build frontend image
-        run: docker build -f frontend/Dockerfile -t ghcr.io/${{ github.repository_owner }}/task-manager-frontend:latest -t ghcr.io/${{ github.repository_owner }}/task-manager-frontend:${{ github.sha }} .
+        run: docker build -f frontend/Dockerfile -t ghcr.io/${{ github.repository_owner | lower }}/task-manager-frontend:latest -t ghcr.io/${{ github.repository_owner | lower }}/task-manager-frontend:${{ github.sha }} .
 
       - name: Push backend image
         run: |
-          docker push ghcr.io/${{ github.repository_owner }}/task-manager-backend:latest
-          docker push ghcr.io/${{ github.repository_owner }}/task-manager-backend:${{ github.sha }}
+          docker push ghcr.io/${{ github.repository_owner | lower }}/task-manager-backend:latest
+          docker push ghcr.io/${{ github.repository_owner | lower }}/task-manager-backend:${{ github.sha }}
 
       - name: Push frontend image
         run: |
-          docker push ghcr.io/${{ github.repository_owner }}/task-manager-frontend:latest
-          docker push ghcr.io/${{ github.repository_owner }}/task-manager-frontend:${{ github.sha }}
+          docker push ghcr.io/${{ github.repository_owner | lower }}/task-manager-frontend:latest
+          docker push ghcr.io/${{ github.repository_owner | lower }}/task-manager-frontend:${{ github.sha }}
 
