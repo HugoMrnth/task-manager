@@ -6,9 +6,6 @@ COPY . /app/
 
 RUN pip install -r requirements.txt
 
-RUN useradd -m appuser && chown -R appuser:appuser /app
-USER appuser
-
 EXPOSE 8000
 
 HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
