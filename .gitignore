@@ -4,6 +4,7 @@ __pycache__/
 .DS_Store
 node_modules/
 package-lock.json
-*.db
+*/*.db
 *.sqlite
 *.sqlite3
+backend/taskmanager.db
