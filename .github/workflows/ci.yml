@@ -85,3 +85,33 @@ jobs:
           install-deps: true
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+
+  docker-build:
+    runs-on: ubuntu-latest
+    needs: pre-commit
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
+      - name: Build Docker images
+        run: docker-compose build
+
+  docker-security:
+    runs-on: ubuntu-latest
+    needs: pre-commit
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Checkov
+        run: pip install checkov
+
+      - name: Scan Dockerfiles with Checkov
+        run: |
+          checkov -d ./backend --framework dockerfile --check CKV_DOCKER_1,CKV_DOCKER_2,CKV_DOCKER_3
+          checkov -d ./frontend --framework dockerfile --check CKV_DOCKER_1,CKV_DOCKER_2,CKV_DOCKER_3
+      
+      - name: Scan docker-compose with Checkov
+        run: checkov -f ./docker-compose.yml --framework docker_compose
+
