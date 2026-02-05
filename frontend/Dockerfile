@@ -1,5 +1,5 @@
 # Frontend statique - serveur HTTP léger
-FROM nginx:alpine
+FROM nginx:alpine@sha256:5878d06ae4c83d73285438255f705bb3f9a736f41cd24876ed25bb33faf76c7d
 
 # Copier les fichiers statiques
 COPY frontend/index.html /usr/share/nginx/html/
