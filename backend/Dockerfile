@@ -1,4 +1,4 @@
-FROM python:3.12@sha256:75c4c2a5e2e1bd7c91c8a7f5e3c5d9e8c4e6f5d9c8e7a6b5c4d3e2f1a0b9c8
+FROM python:3.12@sha256:b592cb353640680ce17a3013a6a403166ab8f2d59f23995ff0e84ffe1947bca9
 LABEL maintainer="Hugo Mrnth <hugo@example.com>"
 
 WORKDIR /app
